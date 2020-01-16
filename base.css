@@ -1,0 +1,52 @@
+body {
+    font-family: 'Lato', sans-serif;
+    background-image: url("https://drexel.edu/~/media/Images/medicine/backgrounds/backgroundAbstractMolecules/mobile.ashx");
+  }
+  .mySlides {
+    display: none;
+  }
+  #tab1 {
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th,
+  td {
+    padding: 15px;
+    text-align: left;
+  }
+  tr:hover {
+    background-color: #e9f773;
+  }
+  th {
+    background-color: #4caf50;
+    color: black;
+  }
+  #myInput {
+    float: center;
+  }
+  .btn1 {
+    background-color: #4caf50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+  .map-container-6{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+    border-style: solid;
+    border-color: black;
+}
+.map-container-6 iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
