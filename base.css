@@ -50,3 +50,24 @@ body {
     width:100%;
     position:absolute;
 }
+#overlayText {
+  position:absolute;
+   top:30%;
+   left:20%;
+   z-index:1;
+ }
+ 
+ #topText {
+   color:black;
+   font-size: 20px;
+   align-self: center;
+ }
+ 
+ .content {
+  position: absolute;
+  bottom: 0;
+  color: red;
+  width: 100%;
+  padding: 20px;
+  font-size: x-large;
+}
