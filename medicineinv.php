@@ -27,7 +27,6 @@
           ></a>
       
           <a href="main.html" class="w3-bar-item w3-button w3-padding-large">HOME</a>
-            
         </div>
     </div>
     <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
@@ -40,11 +39,15 @@
           echo "Falied to connect". mysqli_connect_error();
       }
       $sql = "SELECT * FROM medicinelist;";
+    //   echo '<input type="text" placeholder="Search.." class="center-block">';
+      include "search.html";
+      echo '<br> <br>';
       echo '<table border="1" cellspacing="2" cellpadding="2" align = "center" > 
       <tr> 
           <td> <font face="Arial">Medicine ID</font> </td> 
           <td> <font face="Arial">Medicine Name</font> </td> 
           <td> <font face="Arial">Medicine Price</font> </td> 
+          <td> <font face="Arial">Medicine Quantity</font> </td>
       </tr>';
  
 if ($result = $con->query($sql)) {
@@ -57,6 +60,7 @@ if ($result = $con->query($sql)) {
                   <td>'.$field1name.'</td> 
                   <td>'.$field2name.'</td> 
                   <td>$'.$field3name.'</td> 
+                  <td> <input type="number" name="quantity" min="1"> </td>
               </tr>';
     }
     $result->free();
