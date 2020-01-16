@@ -15,9 +15,9 @@ body {
     padding: 15px;
     text-align: left;
   }
-  tr:hover {
+  /* tr:hover {
     background-color: #e9f773;
-  }
+  } */
   th {
     background-color: #4caf50;
     color: black;

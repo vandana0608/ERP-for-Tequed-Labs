@@ -19,19 +19,21 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){      //check for type of connection
 
     $sql = "SELECT username FROM userdetails WHERE username = '$username' and pass = '$pass';";
       $result = mysqli_query($con,$sql);
+      $row = NULL;
       //$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       $active = $row['active'];
 
       $count = mysqli_num_rows($result);
 if($count == 1){      //exact match to the number of rows with the same name with different passwords
     $_SESSION['login_user']=$username;
-    header("location: index.html");
+    header("location: main.html");
 }
 else{?>
    <!-- echo"<center><h3 style='color:red';>Your login name or password is incorrect"; -->
-  <script>  window.alert("Invalid Username & password.");
+  <script>  alert("Invalid Username & password.");
             window.location = "login.html";
   </script>
+
 <?php
 }
 ?>
