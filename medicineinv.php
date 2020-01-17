@@ -42,13 +42,15 @@
     //   echo '<input type="text" placeholder="Search.." class="center-block">';
       include "search.html";
       echo '<br> <br>';
-      echo '<table border="1" cellspacing="2" cellpadding="2" align = "center" > 
+      echo '<table border="1" cellspacing="1" cellpadding="1" align = "center" id = "tb2"> 
       <tr> 
           <td> <font face="Arial">Medicine ID</font> </td> 
           <td> <font face="Arial">Medicine Name</font> </td> 
           <td> <font face="Arial">Medicine Price</font> </td> 
           <td> <font face="Arial">Medicine Quantity</font> </td>
+          <td> <font face="Arial">Add To Cart</font></td>
       </tr>';
+
  
 if ($result = $con->query($sql)) {
     while ($row = $result->fetch_assoc()) {
@@ -61,25 +63,17 @@ if ($result = $con->query($sql)) {
                   <td>'.$field2name.'</td> 
                   <td>$'.$field3name.'</td> 
                   <td> <input type="number" name="quantity" min="1"> </td>
+                  <td> <button type = "button" id = "cartbutton" onclick = "addtocart()">Buy</button> </td>
               </tr>';
     }
     $result->free();
 } 
 ?>
-<!-- // $result = $con->query($sql);
-
-// if ($result->num_rows > 0) {
-//     // output data of each row
-//     while($row = $result->fetch_assoc()) {
-//         echo "medicine_id: " . $row["medicine_id"]. "\t"." Name: " . $row["medicine_name"]."\t" . "Cost: " . $row["medicine_cost"]. "<br>";
-//     }
-// } else {
-//     echo "0 results";
-// }
-// $con->close();
-// ?> -->
-
-    
 </body>
+<script>
+    function addtocart() {
+        alert("Added to cart");
+    }
+</script>
 
 </html>

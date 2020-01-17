@@ -12,7 +12,7 @@ body {
   }
   th,
   td {
-    padding: 15px;
+    padding: 10px;
     text-align: left;
   }
   /* tr:hover {
@@ -70,4 +70,12 @@ body {
   width: 100%;
   padding: 20px;
   font-size: x-large;
+}
+
+#cartbutton {
+  align-self: center;
+}
+
+#tb2 {
+  height: 100px;
 }
