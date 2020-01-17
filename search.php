@@ -14,10 +14,11 @@
     <title>Document</title>
 </head>
 <body>
+
 <?php
     $query = $_GET['query']; 
     // gets value sent over search form
-     
+
     // if query length is more or equal minimum length then
          
         $query = htmlspecialchars($query); 
@@ -46,6 +47,7 @@
             }
              
         }
+
         else{ // if there is no matching rows do following
             echo "No results";
         }
