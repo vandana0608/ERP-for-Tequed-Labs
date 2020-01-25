@@ -21,10 +21,17 @@ if ($result = $mysqli->query('SELECT * FROM medicinelist ORDER BY ' .  $column .
 	<!DOCTYPE html>
 	<html>
 		<head>
-			<title>Sorted Data</title>
 			<meta charset="utf-8">
-			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+            <title> Viva pharmacy</title>
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 			<style>
+            body {
+            font-family: 'Lato', sans-serif;
+            background-image: url("https://drexel.edu/~/media/Images/medicine/backgrounds/backgroundAbstractMolecules/mobile.ashx");
+            }
 			table {
 				border-collapse: collapse;
 				width: 500px;
@@ -62,21 +69,50 @@ if ($result = $mysqli->query('SELECT * FROM medicinelist ORDER BY ' .  $column .
 			</style>
 		</head>
 		<body>
+            <div class="w3-top">
+                <div class="w3-bar w3-black w3-card">
+                    <a
+                    class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
+                    href="javascript:void(0)"
+                    onclick="myFunction()"
+                    title="Toggle Navigation Menu"
+                    ><i class="fa fa-bars"></i
+                ></a>
+                <a href="main.html" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+                </div>
+            </div>
+            <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+                <h2 class="w3-wide">VIVA PHARMACY</h2>
+                <p class="w3-opacity"><i>Always there to care</i></p>
+            </div>
+            <?php
+                include "search.html";
+                echo '<br> <br>';
+            ?>
 			<table align = "center">
 				<tr>
                     <th><a href="sort.php?column=medicine_id&order=<?php echo $asc_or_desc; ?>">Medicine ID<i class="fas fa-sort<?php echo $column == 'medicine_id' ? '-' . $up_or_down : ''; ?>"></i></a></th>
                     <th><a href="sort.php?column=medicine_name&order=<?php echo $asc_or_desc; ?>">Medicine Name<i class="fas fa-sort<?php echo $column == 'medicine_name' ? '-' . $up_or_down : ''; ?>"></i></a></th>
-		            <th><a href="sort.php?column=medicine_cost&order=<?php echo $asc_or_desc; ?>">Medicine Cost<i class="fas fa-sort<?php echo $column == 'medicine_cost' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+                    <th><a href="sort.php?column=medicine_cost&order=<?php echo $asc_or_desc; ?>">Medicine Cost<i class="fas fa-sort<?php echo $column == 'medicine_cost' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+                    <th>Quantity</th>
+                    <th>Cart</th>
 				</tr>
 				<?php while ($row = $result->fetch_assoc()): ?>
 				<tr>
 					<td<?php echo $column == 'medicine_id' ? $add_class : ''; ?>><?php echo $row['medicine_id']; ?></td>
 					<td<?php echo $column == 'medicine_name' ? $add_class : ''; ?>><?php echo $row['medicine_name']; ?></td>
-					<td<?php echo $column == 'medicine_cost' ? $add_class : ''; ?>><?php echo $row['medicine_cost']; ?></td>
+                    <td<?php echo $column == 'medicine_cost' ? $add_class : ''; ?>><?php echo $row['medicine_cost']; ?></td>
+                    <td> <input type="number" name="quantity" min="1"> </td>
+                    <td> <button type = "button" id = "cartbutton" onclick = "addtocart()">Buy</button> </td>
 				</tr>
 				<?php endwhile; ?>
 			</table>
-		</body>
+        </body>
+        <script>
+            function addtocart() {
+                alert("Added to cart");
+            }
+        </script>
 	</html>
 	<?php
 	$result->free();
