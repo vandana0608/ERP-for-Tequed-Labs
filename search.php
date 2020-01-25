@@ -18,7 +18,7 @@
 <?php
     $query = $_GET['query']; 
     // gets value sent over search form
-    $min_length = 10;
+    $min_length = 1;
     // if query length is more or equal minimum length then
     if(strlen($query) >= $min_length){
         $query = htmlspecialchars($query); 
