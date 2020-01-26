@@ -110,6 +110,7 @@ if ($result = $mysqli->query('SELECT * FROM medicinelist ORDER BY ' .  $column .
 				</tr>
 				<?php endwhile; ?>
 			</table>
+			<?php include "indexpdf.html"; ?>
         </body>
         <script>
             function addtocart() {
