@@ -27,12 +27,12 @@ class PDF extends FPDF
 function Header()
 {
     // Logo
-    $this->Image('tutorial/logo.png',10,-1,70);
+    $this->Image('Capture1.jpg',10,5,30);
     $this->SetFont('Arial','B',13);
     // Move to the right
     $this->Cell(80);
     // Title
-    $this->Cell(80,10,'Employee List',1,0,'C');
+    $this->Cell(80,10,'Medicine List',1,0,'C');
     // Line break
     $this->Ln(20);
 }

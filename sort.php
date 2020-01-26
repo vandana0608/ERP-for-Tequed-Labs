@@ -110,7 +110,10 @@ if ($result = $mysqli->query('SELECT * FROM medicinelist ORDER BY ' .  $column .
 				</tr>
 				<?php endwhile; ?>
 			</table>
-			<?php include "indexpdf.html"; ?>
+			<div class="container" style="padding-top:50px" align = "center">
+				<form class="form-inline" method="post" action="generate_pdf.php">
+				<button type="submit" id="pdf" name="generate_pdf" class="btn btn-primary"><i class="fa fa-pdf"" aria-hidden="true"></i>
+				Generate PDF</button>
         </body>
         <script>
             function addtocart() {
