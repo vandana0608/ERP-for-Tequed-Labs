@@ -78,7 +78,10 @@ if ($result = $mysqli->query('SELECT * FROM medicinelist ORDER BY ' .  $column .
                     title="Toggle Navigation Menu"
                     ><i class="fa fa-bars"></i
                 ></a>
-                <a href="main.html" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+				<a href="main.html" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+				<a href="add.php" class="w3-bar-item w3-button w3-padding-large">ADD</a>
+				<a href="modify.php" class="w3-bar-item w3-button w3-padding-large">MODIFY</a>
+				<a href="delete.php" class="w3-bar-item w3-button w3-padding-large">DELETE</a>
                 </div>
             </div>
             <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
