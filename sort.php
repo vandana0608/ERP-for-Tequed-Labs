@@ -104,7 +104,7 @@ if ($result = $mysqli->query('SELECT * FROM medicinelist ORDER BY ' .  $column .
 				<tr>
 					<td<?php echo $column == 'medicine_id' ? $add_class : ''; ?>><?php echo $row['medicine_id']; ?></td>
 					<td<?php echo $column == 'medicine_name' ? $add_class : ''; ?>><?php echo $row['medicine_name']; ?></td>
-                    <td<?php echo $column == 'medicine_cost' ? $add_class : ''; ?>><?php echo $row['medicine_cost']; ?></td>
+                    <td<?php echo $column == 'medicine_cost' ? $add_class : ''; ?>><?php echo "$" .$row['medicine_cost']; ?></td>
                     <td> <input type="number" name="quantity" min="1"> </td>
                     <td> <button type = "button" id = "cartbutton" onclick = "addtocart()">Buy</button> </td>
 				</tr>

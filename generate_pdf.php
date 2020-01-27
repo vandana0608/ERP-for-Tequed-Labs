@@ -27,7 +27,7 @@ class PDF extends FPDF
 function Header()
 {
     // Logo
-    $this->Image('Capture1.jpg',10,5,30);
+    $this->Image('Capture1.jpg',10,5,40);
     $this->SetFont('Arial','B',13);
     // Move to the right
     $this->Cell(80);
@@ -51,7 +51,7 @@ function Footer()
  
 $db = new dbObj();
 $connString =  $db->getConnstring();
-$display_heading = array('medicine_id'=>'ID', 'medicine_name'=> 'Name', 'medicine_cost'=> 'Cost',);
+$display_heading = array('medicine_id'=>'ID', 'medicine_name'=> 'Name', 'medicine_cost'=> 'Cost (in $)',);
  
 $result = mysqli_query($connString, "SELECT medicine_id, medicine_name, medicine_cost FROM medicinelist") or die("database error:". mysqli_error($connString));
 $header = mysqli_query($connString, "SHOW columns FROM medicinelist");
@@ -62,13 +62,14 @@ $pdf->AddPage();
 //foter page
 $pdf->AliasNbPages();
 $pdf->SetFont('Arial','B',12);
+$pdf->Ln(20);
 foreach($header as $heading) {
 $pdf->Cell(40,12,$display_heading[$heading['Field']],1);
 }
 foreach($result as $row) {
 $pdf->Ln();
 foreach($row as $column)
-$pdf->Cell(40,12,$column,1);
+    $pdf->Cell(40,12,$column,1);
 }
 $pdf->Output();
 ?>
