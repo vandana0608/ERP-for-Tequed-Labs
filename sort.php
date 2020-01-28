@@ -125,7 +125,7 @@ if ($result = $mysqli->query('SELECT * FROM medicinelist ORDER BY ' .  $column .
 				<a href="main.html" class="w3-bar-item w3-button w3-padding-large">HOME</a>
 				<a href="add.php" class="w3-bar-item w3-button w3-padding-large">ADD</a>
 				<div class="dropdown">
-    				<button class="w3-bar-item w3-button w3-padding-large  dropbtn">MODIFY
+    				<button class="w3-bar-item w3-button w3-padding-large dropbtn">MODIFY
       				<i class="fa fa-caret-down"></i>
     				</button>
     				<div class="dropdown-content">
