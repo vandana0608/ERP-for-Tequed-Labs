@@ -51,9 +51,9 @@ function Footer()
  
 $db = new dbObj();
 $connString =  $db->getConnstring();
-$display_heading = array('medicine_id'=>'ID', 'medicine_name'=> 'Name', 'medicine_cost'=> 'Cost (in $)',);
+$display_heading = array('medicine_id'=>'ID', 'medicine_name'=> 'Name','medicine_quantity'=> 'Quantity', 'medicine_cost'=> 'Cost (in $)',);
  
-$result = mysqli_query($connString, "SELECT medicine_id, medicine_name, medicine_cost FROM medicinelist") or die("database error:". mysqli_error($connString));
+$result = mysqli_query($connString, "SELECT medicine_id, medicine_name, medicine_quantity, medicine_cost FROM medicinelist") or die("database error:". mysqli_error($connString));
 $header = mysqli_query($connString, "SHOW columns FROM medicinelist");
  
 $pdf = new PDF();

@@ -7,17 +7,13 @@
 
 <div id="main" align = "center">
 <div id="login" align = "center">
-<h2>Medicine Details</h2>
+<h2> Modify Medicine Details</h2>
 <hr/>
 <form action="" method="post">
 <label>Medicine ID :</label>
 <input type="text" name="medid" id="medid" required="required" placeholder="Please Enter ID"/><br /><br />
-<label>Medicine Name :</label>
-<input type="text" name="medname" id="medname" required="required" placeholder="Please Enter Name"/><br/><br />
 <label>Medicine Quantity :</label>
 <input type="number" name="medqty" id="medqty" min="1" required="required" placeholder="Please Enter Quantity"/><br/><br />
-<label>Medicine Cost :</label>
-<input type="number" name="medcost" id="medcost" min="1" required="required" placeholder="Please Enter Cost"/><br/><br />
 <input type="submit" value=" Submit " name="submit"/><br />
 </form>
 </div>
@@ -37,11 +33,10 @@ if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO medicinelist (medicine_id, medicine_name, medicine_quantity, medicine_cost)
-VALUES ('".$_POST["medid"]."','".$_POST["medname"]."','".$_POST["medqty"]."','".$_POST["medcost"]."')";
+$sql = "UPDATE medicinelist set medicine_quantity='".$_POST["medqty"]."' where medicine_id='".$_POST["medid"]."'";
+
 
 if ($conn->query($sql) === TRUE) {
-// echo "<script type= 'text/javascript'>alert('New record created successfully');</script>";
 header("Location: sort.php");
 exit;
 } else {
