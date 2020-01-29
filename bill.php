@@ -93,7 +93,7 @@ if(isset($_GET["action"]))
 
 						<h4 class="text-danger">Medicine Cost per unit : $ <?php echo $row["medicine_cost"]; ?></h4>
 
-						<input type="number" name="quantity" value="1" class="form-control" />
+						<input type="number" name="quantity" value="1" min="1" class="form-control" />
 
 						<input type="hidden" name="hidden_name" value="<?php echo $row["medicine_name"]; ?>" />
 
@@ -143,18 +143,18 @@ if(isset($_GET["action"]))
 						<td align="right">$ <?php echo number_format($total, 2); ?></td>
 						<td></td>
 					</tr>
+					<div class="container" style="padding-top:50px" align = "center">
+                		<form>
+				        	<button formaction="placeorder.php" class="w3-button w3-black w3-margin-bottom">
+    			            	Place Order
+				        	</button>
+                		</form>
+			    	</div>
 					<?php
 					}
 					?>
 						
 				</table>
-                <div class="container" style="padding-top:50px" align = "center">
-                <form>
-				        <button formaction="placeorder.php" class="w3-button w3-black w3-margin-bottom">
-    			            Place Order
-				        </button>
-                </form>
-			    </div>
 			</div>
 		</div>
 	</div>
