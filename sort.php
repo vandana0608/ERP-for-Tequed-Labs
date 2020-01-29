@@ -137,6 +137,7 @@ if ($result = $mysqli->query('SELECT * FROM medicinelist ORDER BY ' .  $column .
 				<a href="modifyc.php" class="w3-bar-item w3-button w3-padding-large">MODIFY (by cost) </a> -->
 				<a href="delete.php" class="w3-bar-item w3-button w3-padding-large">DELETE</a>
 				<a href="generate_pdf.php" class="w3-bar-item w3-button w3-padding-large">GENERATE PDF</a>
+				<a href="bill.php" class="w3-bar-item w3-button w3-padding-large">BILLING</a>
             </div>
 			<br>
             <div class="w3-container w3-content w3-center w3-padding-4" style="max-width:800px" id="band">
@@ -145,7 +146,7 @@ if ($result = $mysqli->query('SELECT * FROM medicinelist ORDER BY ' .  $column .
             </div>
 			<br>
             <?php
-                include "search.html";
+				include "search.html";
                 echo '<br> <br>';
             ?>
 			<table align = "center">
@@ -154,8 +155,6 @@ if ($result = $mysqli->query('SELECT * FROM medicinelist ORDER BY ' .  $column .
                     <th><a href="sort.php?column=medicine_name&order=<?php echo $asc_or_desc; ?>">Medicine Name<i class="fas fa-sort<?php echo $column == 'medicine_name' ? '-' . $up_or_down : ''; ?>"></i></a></th>
 					<th><a href="sort.php?column=medicine_quantity&order=<?php echo $asc_or_desc; ?>">Medicine Quantity<i class="fas fa-sort<?php echo $column == 'medicine_cost' ? '-' . $up_or_down : ''; ?>"></i></a></th>
                     <th><a href="sort.php?column=medicine_cost&order=<?php echo $asc_or_desc; ?>">Medicine Cost<i class="fas fa-sort<?php echo $column == 'medicine_cost' ? '-' . $up_or_down : ''; ?>"></i></a></th>
-                    <th>Quantity</th>
-                    <th>Cart</th>
 				</tr>
 				<?php while ($row = $result->fetch_assoc()): ?>
 				<tr>
@@ -163,17 +162,17 @@ if ($result = $mysqli->query('SELECT * FROM medicinelist ORDER BY ' .  $column .
 					<td<?php echo $column == 'medicine_name' ? $add_class : ''; ?>><?php echo $row['medicine_name']; ?></td>
 					<td id="quantity" <?php echo $column == 'medicine_quantity' ? $add_class : ''; ?>><?php echo $row['medicine_quantity']; ?></td>
                     <td<?php echo $column == 'medicine_cost' ? $add_class : ''; ?>><?php echo "$" .$row['medicine_cost']; ?></td>
-                    <td> <input type="number" name="quantity" min="1" value="" id="newQuantity" onkeyup="updateMedQuantity('<?php echo $row['medicine_id'] ?>','<?php echo $row['medicine_quantity'] ?>')"> </td>
-                    <td> <button type = "button" id = "cartbutton" onclick = "addToCart('<?php echo $row['medicine_id'] ?>','<?php echo $row['medicine_quantity'] ?>')">Buy</button> </td>
+					<!-- <td> <input type="number" min="1" value="" id="newQuantity" onkeyup="updateMedQuantity('<?php echo $row['medicine_id'] ?>','<?php echo $row['medicine_quantity'] ?>')"> </td>
+                    <td> <button type = "button" id = "cartbutton" onclick = "addToCart('<?php echo $row['medicine_id'] ?>','<?php echo $row['medicine_quantity']?>')">Buy</button> </td> -->
 				</tr>
 				<?php endwhile; ?>
 			</table>
-			<div class="container" style="padding-top:50px" align = "center">
+			<!-- <div class="container" style="padding-top:50px" align = "center">
 				<button onclick="generateBill()" class="w3-button w3-black w3-margin-bottom">
     			Generate Bill
 				</button>
-			</div>
-			<script
+			</div> -->
+			<!-- <script
   			src="https://code.jquery.com/jquery-3.4.1.min.js"
   			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   			crossorigin="anonymous"></script>
@@ -184,6 +183,7 @@ if ($result = $mysqli->query('SELECT * FROM medicinelist ORDER BY ' .  $column .
         		if (item) return alert('Item already in cart');
     
         		const quantity = document.getElementById(`newQuantity`).value;
+				// const quantity = val;
 
         		if(quantity == 0) return alert('Quantity cannot be zero');
     
@@ -222,7 +222,7 @@ if ($result = $mysqli->query('SELECT * FROM medicinelist ORDER BY ' .  $column .
         		})
         		.fail(error => {console.log(error)});
     			}
-        	</script>
+        	</script> -->
         </body>
 	</html>
 	<?php
