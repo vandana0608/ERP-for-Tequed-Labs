@@ -26,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){      //check for type of connection
       $count = mysqli_num_rows($result);
 if($count == 1){      //exact match to the number of rows with the same name with different passwords
     $_SESSION['login_user']=$username;
-    header("location: main.html");
+    header("location: sort.php");
 }
 else{?>
    <!-- echo"<center><h3 style='color:red';>Your login name or password is incorrect"; -->
