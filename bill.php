@@ -15,7 +15,7 @@ if(isset($_POST["add_to_cart"]))
 				'item_name'			=>	$_POST["hidden_name"],
 				'item_price'		=>	$_POST["hidden_price"],
                 'item_quantity'		=>	$_POST["quantity"],
-                'med_qty'		    =>	$_POST["medicine_qty"],
+                // 'med_qty'		    =>	$_POST["medicine_qty"],
 			);
 			$_SESSION["shopping_cart"][$count] = $item_array;
 		}
@@ -145,7 +145,7 @@ if(isset($_GET["action"]))
 					</tr>
 					<div class="container" style="padding-top:50px" align = "center">
                 		<form>
-				        	<button formaction="placeorder.php" class="w3-button w3-black w3-margin-bottom">
+				        	<button formaction="credictcardindex.html" class="w3-button w3-black w3-margin-bottom">
     			            	Place Order
 				        	</button>
                 		</form>
