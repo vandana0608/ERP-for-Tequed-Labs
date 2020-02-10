@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 27, 2020 at 11:18 AM
+-- Generation Time: Feb 10, 2020 at 05:01 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -19,29 +19,33 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `login`
+-- Database: `loginerp`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `medicinelist`
+-- Table structure for table `studentdetails`
 --
 
-CREATE TABLE `medicinelist` (
-  `medicine_id` varchar(10) NOT NULL,
-  `medicine_name` varchar(20) NOT NULL,
-  `medicine_cost` float NOT NULL
+CREATE TABLE `studentdetails` (
+  `name` varchar(30) NOT NULL,
+  `college` varchar(30) NOT NULL,
+  `yearofstudy` int(4) NOT NULL,
+  `branch` varchar(30) NOT NULL,
+  `courseopted` varchar(30) NOT NULL,
+  `trainer` varchar(30) NOT NULL,
+  `totalfees` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `medicinelist`
+-- Dumping data for table `studentdetails`
 --
 
-INSERT INTO `medicinelist` (`medicine_id`, `medicine_name`, `medicine_cost`) VALUES
-('MID01', 'Dolo650', 10.5),
-('MID02', 'Vicks', 5),
-('MID04', 'Keratin', 45);
+INSERT INTO `studentdetails` (`name`, `college`, `yearofstudy`, `branch`, `courseopted`, `trainer`, `totalfees`) VALUES
+('Vandana Rao', 'JSSATE', 3, 'ISE', 'FSWD', 'Naveen', 500),
+('Mohitha Rao', 'ANPS', 1, 'ICSE', 'AI', 'Supreeth', 600),
+('Amrutha', 'JSSATE', 3, 'ISE', 'ML', 'Supreeth', 800);
 
 -- --------------------------------------------------------
 
@@ -50,8 +54,8 @@ INSERT INTO `medicinelist` (`medicine_id`, `medicine_name`, `medicine_cost`) VAL
 --
 
 CREATE TABLE `userdetails` (
-  `username` varchar(20) NOT NULL,
-  `pass` varchar(20) NOT NULL
+  `username` varchar(30) NOT NULL,
+  `pass` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -59,8 +63,7 @@ CREATE TABLE `userdetails` (
 --
 
 INSERT INTO `userdetails` (`username`, `pass`) VALUES
-('amur', 'abc'),
-('nay', 'def');
+('admin', 'admin01');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
