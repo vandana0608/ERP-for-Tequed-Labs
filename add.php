@@ -1,23 +1,35 @@
 <html>
 <head>
-<title>VIVA PHARMACY</title>
+<title>TEQUED LABS</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+<style>
+    body {
+        background-image: url("https://terillium.com/wp-content/uploads/2018/07/HomePage-background.jpg");
+      color: white;
+    }
+</style>
 
 <div id="main" align = "center">
 <div id="login" align = "center">
-<h2>Medicine Details</h2>
+<h2 style="color:black">Student Details</h2>
 <hr/>
 <form action="" method="post">
-<label>Medicine ID :</label>
-<input type="text" name="medid" id="medid" required="required" placeholder="Please Enter ID"/><br /><br />
-<label>Medicine Name :</label>
-<input type="text" name="medname" id="medname" required="required" placeholder="Please Enter Name"/><br/><br />
-<label>Medicine Quantity :</label>
-<input type="number" name="medqty" id="medqty" min="1" required="required" placeholder="Please Enter Quantity"/><br/><br />
-<label>Medicine Cost :</label>
-<input type="number" name="medcost" id="medcost" min="1" required="required" placeholder="Please Enter Cost"/><br/><br />
+<label>Name :</label>
+<input type="text" name="sname" id="sname" required="required" placeholder="Please Enter Name"/><br /><br />
+<label>College :</label>
+<input type="text" name="college" id="college" required="required" placeholder="Please Enter College"/><br/><br />
+<label>Year of Study :</label>
+<input type="number" name="yearofstudy" id="yearofstudy" min="1" max="6" required="required" placeholder="Please Enter Year Of Study"/><br/><br />
+<label>Branch :</label>
+<input type="text" name="branch" id="branch" required="required" placeholder="Please Enter Branch"/><br/><br />
+<label>Course Opted :</label>
+<input type="text" name="course" id="course" required="required" placeholder="Please Enter Course"/><br/><br />
+<label>Trainer :</label>
+<input type="text" name="trainer" id="trainer" required="required" placeholder="Please Enter Trainer"/><br/><br />
+<label>Total Fees :</label>
+<input type="number" name="totalfees" id="totalfees" min="100" required="required" placeholder="Please Enter Cost"/><br/><br />
 <input type="submit" value=" Submit " name="submit"/><br />
 </form>
 </div>
@@ -28,7 +40,7 @@ if(isset($_POST["submit"])){
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "login";
+$dbname = "loginerp";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -37,8 +49,8 @@ if ($conn->connect_error) {
 die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO medicinelist (medicine_id, medicine_name, medicine_quantity, medicine_cost)
-VALUES ('".$_POST["medid"]."','".$_POST["medname"]."','".$_POST["medqty"]."','".$_POST["medcost"]."')";
+$sql = "INSERT INTO studentdetails (name, college, yearofstudy, branch, courseopted, trainer, totalfees)
+VALUES ('".$_POST["sname"]."','".$_POST["college"]."','".$_POST["yearofstudy"]."','".$_POST["branch"]."','".$_POST["course"]."','".$_POST["trainer"]."','".$_POST["totalfees"]."')";
 
 if ($conn->query($sql) === TRUE) {
 // echo "<script type= 'text/javascript'>alert('New record created successfully');</script>";

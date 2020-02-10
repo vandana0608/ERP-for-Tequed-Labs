@@ -8,7 +8,7 @@
 <body>
     
 <?php 
-$con=mysqli_connect("localhost","root","","login");     //connect through DB through APache server (website,username,password,DB name)
+$con=mysqli_connect("localhost","root","","loginerp");     //connect through DB through APache server (website,username,password,DB name)
 if(mysqli_connect_errno()){                            //to check if the connection to server is done
     echo "Falied to connect". mysqli_connect_error();
 }

@@ -1,9 +1,9 @@
 <?php
 // Below is optional, remove if you have already connected to your database.
-$mysqli = mysqli_connect('localhost', 'root', '', 'login');
+$mysqli = mysqli_connect('localhost', 'root', '', 'loginerp');
 
 // For extra protection these are the columns of which the user can sort by (in your database table).
-$columns = array('medicine_name', 'medicine_id', 'medicine_cost', 'medicine_quantity');
+$columns = array('name', 'college', 'yearofstudy', 'branch', 'courseopted', 'trainer', 'totalfees');
 
 // Only get the column if it exists in the above columns array, if it doesn't exist the database table will be sorted by the first item in the columns array.
 $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET['column'] : $columns[0];
@@ -12,7 +12,7 @@ $column = isset($_GET['column']) && in_array($_GET['column'], $columns) ? $_GET[
 $sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
 
 // Get the result...
-if ($result = $mysqli->query('SELECT * FROM medicinelist ORDER BY ' .  $column . ' ' . $sort_order)) {
+if ($result = $mysqli->query('SELECT * FROM studentdetails ORDER BY ' .  $column . ' ' . $sort_order)) {
 	// Some variables we need for the table.
 	$up_or_down = str_replace(array('ASC','DESC'), array('up','down'), $sort_order); 
 	$asc_or_desc = $sort_order == 'ASC' ? 'desc' : 'asc';
@@ -22,7 +22,7 @@ if ($result = $mysqli->query('SELECT * FROM medicinelist ORDER BY ' .  $column .
 	<html>
 		<head>
 			<meta charset="utf-8">
-            <title> Viva pharmacy</title>
+            <title>TEQUED LABS</title>
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
             <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -30,7 +30,8 @@ if ($result = $mysqli->query('SELECT * FROM medicinelist ORDER BY ' .  $column .
 			<style>
             body {
             font-family: 'Lato', sans-serif;
-            background-image: url("https://drexel.edu/~/media/Images/medicine/backgrounds/backgroundAbstractMolecules/mobile.ashx");
+            background-image: url("https://terillium.com/wp-content/uploads/2018/07/HomePage-background.jpg");
+      color: white;
             }
 			.dropdown {
   			float: left;
@@ -124,105 +125,37 @@ if ($result = $mysqli->query('SELECT * FROM medicinelist ORDER BY ' .  $column .
                 ></a>
 				<a href="main.html" class="w3-bar-item w3-button w3-padding-large">HOME</a>
 				<a href="add.php" class="w3-bar-item w3-button w3-padding-large">ADD</a>
-				<div class="dropdown">
-    				<button class="w3-bar-item w3-button w3-padding-large dropbtn">MODIFY
-      				<i class="fa fa-caret-down"></i>
-    				</button>
-    				<div class="dropdown-content">
-      					<a href="modifyc.php">BY COST</a>
-      					<a href="modifyq.php">BY QUANTITY</a>
-    				</div>
-				</div>
-				<!-- <a href="modifyq.php" class="w3-bar-item w3-button w3-padding-large">MODIFY (by quantity) </a>
-				<a href="modifyc.php" class="w3-bar-item w3-button w3-padding-large">MODIFY (by cost) </a> -->
-				<a href="delete.php" class="w3-bar-item w3-button w3-padding-large">DELETE</a>
 				<a href="generate_pdf.php" class="w3-bar-item w3-button w3-padding-large">GENERATE PDF</a>
-				<a href="bill.php" class="w3-bar-item w3-button w3-padding-large">BILLING</a>
             </div>
 			<br>
             <div class="w3-container w3-content w3-center w3-padding-4" style="max-width:800px" id="band">
-                <h2 class="w3-wide">VIVA PHARMACY</h2>
-                <p class="w3-opacity"><i>Always there to care</i></p>
+                <h2 class="w3-wide">TEQUED LABS ERP SYSTEM</h2>
             </div>
-			<br>
-            <?php
-				include "search.html";
-                echo '<br> <br>';
-            ?>
+			<br> <br>
+			<br> <br>
 			<table align = "center">
 				<tr>
-                    <th><a href="sort.php?column=medicine_id&order=<?php echo $asc_or_desc; ?>">Medicine ID<i class="fas fa-sort<?php echo $column == 'medicine_id' ? '-' . $up_or_down : ''; ?>"></i></a></th>
-                    <th><a href="sort.php?column=medicine_name&order=<?php echo $asc_or_desc; ?>">Medicine Name<i class="fas fa-sort<?php echo $column == 'medicine_name' ? '-' . $up_or_down : ''; ?>"></i></a></th>
-					<th><a href="sort.php?column=medicine_quantity&order=<?php echo $asc_or_desc; ?>">Medicine Quantity<i class="fas fa-sort<?php echo $column == 'medicine_cost' ? '-' . $up_or_down : ''; ?>"></i></a></th>
-                    <th><a href="sort.php?column=medicine_cost&order=<?php echo $asc_or_desc; ?>">Medicine Cost<i class="fas fa-sort<?php echo $column == 'medicine_cost' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+                    <th><a href="sort.php?column=name&order=<?php echo $asc_or_desc; ?>">Name<i class="fas fa-sort<?php echo $column == 'name' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+                    <th><a href="sort.php?column=college&order=<?php echo $asc_or_desc; ?>">College<i class="fas fa-sort<?php echo $column == 'college' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+					<th><a href="sort.php?column=yearofstudy&order=<?php echo $asc_or_desc; ?>">Year of Study<i class="fas fa-sort<?php echo $column == 'yearofstudy' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+					<th>Branch</th>
+					<th><a href="sort.php?column=courseopted&order=<?php echo $asc_or_desc; ?>">Course Opted<i class="fas fa-sort<?php echo $column == 'courseopted' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+					<th><a href="sort.php?column=trainer&order=<?php echo $asc_or_desc; ?>">Trainer<i class="fas fa-sort<?php echo $column == 'trainer' ? '-' . $up_or_down : ''; ?>"></i></a></th>
+					<th>Total Fees</th>
 				</tr>
 				<?php while ($row = $result->fetch_assoc()): ?>
 				<tr>
-					<td<?php echo $column == 'medicine_id' ? $add_class : ''; ?>><?php echo $row['medicine_id']; ?></td>
-					<td<?php echo $column == 'medicine_name' ? $add_class : ''; ?>><?php echo $row['medicine_name']; ?></td>
-					<td id="quantity" <?php echo $column == 'medicine_quantity' ? $add_class : ''; ?>><?php echo $row['medicine_quantity']; ?></td>
-                    <td<?php echo $column == 'medicine_cost' ? $add_class : ''; ?>><?php echo "$" .$row['medicine_cost']; ?></td>
-					<!-- <td> <input type="number" min="1" value="" id="newQuantity" onkeyup="updateMedQuantity('<?php echo $row['medicine_id'] ?>','<?php echo $row['medicine_quantity'] ?>')"> </td>
-                    <td> <button type = "button" id = "cartbutton" onclick = "addToCart('<?php echo $row['medicine_id'] ?>','<?php echo $row['medicine_quantity']?>')">Buy</button> </td> -->
+					<td<?php echo $column == 'name' ? $add_class : ''; ?>><?php echo $row['name']; ?></td>
+					<td<?php echo $column == 'college' ? $add_class : ''; ?>><?php echo $row['college']; ?></td>
+					<td<?php echo $column == 'yearofstudy' ? $add_class : ''; ?>><?php echo $row['yearofstudy']; ?></td>
+					<td<?php echo $column == 'branch' ? $add_class : ''; ?>><?php echo $row['branch']; ?></td>
+					<td<?php echo $column == 'courseopted' ? $add_class : ''; ?>><?php echo $row['courseopted']; ?></td>
+					<td<?php echo $column == 'trainer' ? $add_class : ''; ?>><?php echo $row['trainer']; ?></td>
+                    <td<?php echo $column == 'totalfees' ? $add_class : ''; ?>><?php echo "Rs." .$row['totalfees']; ?></td>
+					
 				</tr>
 				<?php endwhile; ?>
 			</table>
-			<!-- <div class="container" style="padding-top:50px" align = "center">
-				<button onclick="generateBill()" class="w3-button w3-black w3-margin-bottom">
-    			Generate Bill
-				</button>
-			</div> -->
-			<!-- <script
-  			src="https://code.jquery.com/jquery-3.4.1.min.js"
-  			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  			crossorigin="anonymous"></script>
-			<script>
-    		var cart = [];
-            function addToCart(medicine_id, stock) {
-        		let item = cart.find(c => c.medicine_id === medicine_id);
-        		if (item) return alert('Item already in cart');
-    
-        		const quantity = document.getElementById(`newQuantity`).value;
-				// const quantity = val;
-
-        		if(quantity == 0) return alert('Quantity cannot be zero');
-    
-        		if (stock - quantity < 0) return alert('Quantity is more than the stock');
-    
-        		cart.push({ medicine_id: medicine_id, quantity: quantity });
-        
-        		alert('Added to cart')
-    		}
-			function updateMedQuantity(medicine_id, stock) {
-        		const newQuantity = document.getElementById(`newQuantity`).value;
-    
-        		if (stock - newQuantity < 0)
-            		return alert('Quantity is more than the stock');
-    
-        		document.getElementById(`quantity`).innerHTML =
-            	stock - newQuantity;
-    		}
-			function generateBill() {
-        		if (cart.length === 0) return alert('Cart is empty');
-
-        		let items = cart;
-        		var csrf_token = $('[name=csrfmiddlewaretoken]').val();
-        		$.ajax(
-            	{
-                	url: 'update.php',
-                	method: 'POST', 
-                	headers : {"Content-type": "application/json", "X-CSRFToken": csrf_token}, 
-                	data: JSON.stringify({items: items})
-            	}
-        		)
-        		.done(response => {
-            	document.open();
-            	document.write(response);
-            	document.close();
-        		})
-        		.fail(error => {console.log(error)});
-    			}
-        	</script> -->
         </body>
 	</html>
 	<?php

@@ -3,7 +3,7 @@ class dbObj {
     var $dbhost = "localhost";
     var $username = "root";
     var $password = "";
-    var $dbname = "login";
+    var $dbname = "loginerp";
     var $conn;
     function getConnstring() {
         $conn = mysqli_connect($this->dbhost, $this->username, $this->password, $this->dbname) or die("Connection failed: " . mysqli_connect_error());
@@ -27,12 +27,12 @@ class PDF extends FPDF
 function Header()
 {
     // Logo
-    $this->Image('Capture1.jpg',10,5,40);
+    $this->Image('logo.jpg',10,5,40);
     $this->SetFont('Arial','B',13);
     // Move to the right
     $this->Cell(80);
     // Title
-    $this->Cell(80,10,'Medicine List',1,0,'C');
+    $this->Cell(80,10,'Student List',1,0,'C');
     // Line break
     $this->Ln(20);
 }
@@ -51,10 +51,10 @@ function Footer()
  
 $db = new dbObj();
 $connString =  $db->getConnstring();
-$display_heading = array('medicine_id'=>'ID', 'medicine_name'=> 'Name','medicine_quantity'=> 'Quantity', 'medicine_cost'=> 'Cost (in $)',);
+$display_heading = array('name'=>'Name', 'college'=> 'College','yearofstudy'=> 'Year','branch'=> 'Branch','courseopted'=> 'Course','trainer'=> 'Trainer', 'totalfees'=> 'Cost in Rs.',);
  
-$result = mysqli_query($connString, "SELECT medicine_id, medicine_name, medicine_quantity, medicine_cost FROM medicinelist") or die("database error:". mysqli_error($connString));
-$header = mysqli_query($connString, "SHOW columns FROM medicinelist");
+$result = mysqli_query($connString, "SELECT name, college, yearofstudy, branch, courseopted, trainer, totalfees FROM studentdetails") or die("database error:". mysqli_error($connString));
+$header = mysqli_query($connString, "SHOW columns FROM studentdetails");
  
 $pdf = new PDF();
 //header
@@ -64,12 +64,12 @@ $pdf->AliasNbPages();
 $pdf->SetFont('Arial','B',12);
 $pdf->Ln(20);
 foreach($header as $heading) {
-$pdf->Cell(40,12,$display_heading[$heading['Field']],1);
+$pdf->Cell(28,12,$display_heading[$heading['Field']],1);
 }
 foreach($result as $row) {
 $pdf->Ln();
 foreach($row as $column)
-    $pdf->Cell(40,12,$column,1);
+    $pdf->Cell(28,12,$column,1);
 }
 $pdf->Output();
 ?>
