@@ -26,7 +26,7 @@ if ($result = $mysqli->query('SELECT * FROM studentdetails ORDER BY ' .  $column
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
             <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 			<style>
             body {
             font-family: 'Lato', sans-serif;
@@ -49,7 +49,7 @@ if ($result = $mysqli->query('SELECT * FROM studentdetails ORDER BY ' .  $column
 			}
 			/* Add a red background color to navbar links on hover */
 			.navbar a:hover, .dropdown:hover .dropbtn {
-			background-color: red;
+			background-color: white;
 			}
 			/* Dropdown content (hidden by default) */
 			.dropdown-content {
@@ -125,7 +125,7 @@ if ($result = $mysqli->query('SELECT * FROM studentdetails ORDER BY ' .  $column
                 ></a>
 				<a href="main.html" class="w3-bar-item w3-button w3-padding-large">HOME</a>
 				<a href="add.php" class="w3-bar-item w3-button w3-padding-large">ADD</a>
-				<a href="generate_pdf.php" class="w3-bar-item w3-button w3-padding-large">GENERATE PDF</a>
+				<a href="pdfgen.php" class="w3-bar-item w3-button w3-padding-large">GENERATE PDF</a>
             </div>
 			<br>
             <div class="w3-container w3-content w3-center w3-padding-4" style="max-width:800px" id="band">

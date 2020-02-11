@@ -53,7 +53,7 @@ $db = new dbObj();
 $connString =  $db->getConnstring();
 $display_heading = array('name'=>'Name', 'college'=> 'College','yearofstudy'=> 'Year','branch'=> 'Branch','courseopted'=> 'Course','trainer'=> 'Trainer', 'totalfees'=> 'Cost in Rs.',);
  
-$result = mysqli_query($connString, "SELECT name, college, yearofstudy, branch, courseopted, trainer, totalfees FROM studentdetails") or die("database error:". mysqli_error($connString));
+$result = mysqli_query($connString, "SELECT name, college, yearofstudy, branch, courseopted, trainer, totalfees FROM studentdetails ORDER BY college DESC") or die("database error:". mysqli_error($connString));
 $header = mysqli_query($connString, "SHOW columns FROM studentdetails");
  
 $pdf = new PDF();
